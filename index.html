@@ -20,7 +20,7 @@
       font-weight: 600;
       margin-bottom: 12px;
       letter-spacing: 0.08em;
-      color: #7C3AED; /* фиолетовый */
+      color: #7C3AED;
     }
 
     .container {
@@ -68,11 +68,12 @@
   </div>
 
   <script>
-    // Birthday: April 22, 2026, 00:00:00 (local time)
-    const targetDate = new Date("2026-04-22T00:00:00");
+    // Надёжная дата: 22 April 2026, local time
+    const targetDate = new Date(2026, 3, 22, 0, 0, 0);
 
     function updateCountdown() {
       const now = new Date();
       const diff = targetDate - now;
 
       if (diff <= 0) {
+        document.getElementById("days").textCon
