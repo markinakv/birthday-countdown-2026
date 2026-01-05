@@ -68,12 +68,30 @@
   </div>
 
   <script>
-    // Надёжная дата: 22 April 2026, local time
-    const targetDate = new Date(2026, 3, 22, 0, 0, 0);
+// Надёжная дата: 22 April 2026, local time
+const targetDate = new Date(2026, 3, 22, 0, 0, 0);
 
-    function updateCountdown() {
-      const now = new Date();
-      const diff = targetDate - now;
+function updateCountdown() {
+  const now = new Date();
+  const diff = targetDate - now;
 
-      if (diff <= 0) {
-        document.getElementById("days").textCon
+  if (diff <= 0) {
+    document.getElementById("days").textContent = "0";
+    document.getElementById("hours").textContent = "0";
+    document.getElementById("minutes").textContent = "0";
+    return;
+  }
+
+  const totalMinutes = Math.floor(diff / (1000 * 60));
+  const days = Math.floor(totalMinutes / (60 * 24));
+  const hours = Math.floor((totalMinutes % (60 * 24)) / 60);
+  const minutes = totalMinutes % 60;
+
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = hours;
+  document.getElementById("minutes").textContent = minutes;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 60 * 1000);
+</script>
